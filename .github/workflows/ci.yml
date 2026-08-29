@@ -1,0 +1,12 @@
+name: My First CI
+
+on:
+  push:
+    branches: [yyz_dev]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 打个招呼
+        run: echo "Hello, GitHub Actions!我是yyz_dev分支"
