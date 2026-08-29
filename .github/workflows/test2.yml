@@ -1,0 +1,18 @@
+name: My First CI
+
+on:
+  push:
+    branches: [yyz_dev]
+  pull_request:
+    branches: [yyz_dev]
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 打个招呼
+        run: echo "Hello, GitHub Actions!我是yyz_dev分支,的test2.yml工作流"
+
+
+
+# push,pull_request workflow_dispatch  schedule
+# branches

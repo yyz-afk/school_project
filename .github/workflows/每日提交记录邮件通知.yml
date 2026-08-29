@@ -1,0 +1,51 @@
+name: 每日提交记录邮件通知
+
+on:
+  schedule:
+    - cron: '0 20 * * *'   # 北京时间凌晨 4:00
+  workflow_dispatch:
+
+jobs:
+  send-commits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出 yyz_dev 分支代码
+        uses: actions/checkout@v4
+        with:
+          ref: yyz_dev       # 指定要检出的分支
+          fetch-depth: 0     # 拉取全部提交历史
+
+      - name: 获取昨日提交记录
+        id: commits
+        run: |
+          YESTERDAY_START=$(date -d "yesterday 00:00:00" +%Y-%m-%dT%H:%M:%S)
+          YESTERDAY_END=$(date -d "yesterday 23:59:59" +%Y-%m-%dT%H:%M:%S)
+
+          LOG=$(git log --since="$YESTERDAY_START" \
+            --until="$YESTERDAY_END" \
+            --pretty=format:"%h | %an | %ai | %s" \
+            --no-merges)
+
+          if [ -z "$LOG" ]; then
+            LOG="昨天没有新的提交记录。"
+          fi
+
+          echo "log<<EOF" >> $GITHUB_OUTPUT
+          echo "$LOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: 发送邮件
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.qq.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.userInfo.USER_NAME }}
+          password: ${{ secrets.userInfo.EMAIL_PASSWORD }}
+          subject: "📌 yyz_dev 分支每日提交记录"
+          to: ${{ secrets.userInfo.EMAIL }}
+          from: GitHub Actions
+          body: |
+            以下是 yyz_dev 分支昨天的提交记录：
+
+            ${{ steps.commits.outputs.log }}
