@@ -2,17 +2,19 @@ name: 每日提交记录邮件通知
 
 on:
   schedule:
-    - cron: '0 20 * * *'   # 北京时间凌晨 4:00
+    - cron: '0 23 * * *'   # 北京时间凌晨 4:00
   workflow_dispatch:
 
 jobs:
   send-commits:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      - name: 检出 yyz_dev 分支代码
+      - name: 检出 yyz 分支代码
         uses: actions/checkout@v4
         with:
-          ref: yyz_dev       # 指定要检出的分支
+          ref: yyz       # 指定要检出的分支
           fetch-depth: 0     # 拉取全部提交历史
 
       - name: 获取昨日提交记录
