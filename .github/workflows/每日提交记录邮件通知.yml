@@ -44,9 +44,10 @@ jobs:
           secure: true
           username: ${{ secrets.userInfo.USER_NAME }}
           password: ${{ secrets.userInfo.EMAIL_PASSWORD }}
-          subject: "📌 yyz_dev 分支每日提交记录 - 接收人：${{ secrets.userInfo.EMAIL != '' && secrets.userInfo.EMAIL || '13574501560@163.com' }}"
+          subject: "📌 yyz 分支每日提交记录 - 接收人：${{ secrets.userInfo.EMAIL != '' && secrets.userInfo.EMAIL || '13574501560@163.com' }}"
           #          to: ${{ secrets.userInfo.EMAIL }}
-          to: ${{ secrets.userInfo.EMAIL != '' && secrets.userInfo.EMAIL || '13574501560@163.com' }}
+#          to: ${{ secrets.userInfo.EMAIL != '' && secrets.userInfo.EMAIL || '13574501560@163.com' }}
+          to: 13574501560@163.com
           from: GitHub Actions
           body: |
             以下是 yyz_dev 分支昨天的提交记录：
