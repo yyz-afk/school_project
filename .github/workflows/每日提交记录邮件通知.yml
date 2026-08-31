@@ -2,7 +2,7 @@ name: 每日提交记录邮件通知
 
 on:
   schedule:
-    - cron: '0 23 * * *'   # 北京时间凌晨 4:00
+    - cron: '0 2 * * *'   # 北京时间凌晨 20对应 4:00
   workflow_dispatch:
 
 jobs:
@@ -44,8 +44,9 @@ jobs:
           secure: true
           username: ${{ secrets.userInfo.USER_NAME }}
           password: ${{ secrets.userInfo.EMAIL_PASSWORD }}
-          subject: "📌 yyz_dev 分支每日提交记录"
-          to: ${{ secrets.userInfo.EMAIL }}
+          subject: "📌 yyz_dev 分支每日提交记录 - 接收人：${{ secrets.userInfo.EMAIL != '' && secrets.userInfo.EMAIL || '13574501560@163.com' }}"
+          #          to: ${{ secrets.userInfo.EMAIL }}
+          to: ${{ secrets.userInfo.EMAIL != '' && secrets.userInfo.EMAIL || '13574501560@163.com' }}
           from: GitHub Actions
           body: |
             以下是 yyz_dev 分支昨天的提交记录：
