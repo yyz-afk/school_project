@@ -1,4 +1,4 @@
-name: My First CI
+name: test1
 
 on:
   push:
