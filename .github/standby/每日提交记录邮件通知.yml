@@ -7,10 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  send-commits:
+  send-commits:    # job名称，任务名称可以随便命名
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+        # 可选：设置超时时间（分钟），超时后 Job 自动取消，防止卡死
+    timeout-minutes: 30
+
     steps:
       - name: 检出 dev 分支代码
         uses: actions/checkout@v4

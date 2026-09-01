@@ -1,0 +1,18 @@
+name: My First CI
+
+on:
+  push:
+    branches: [dev]
+# 在 Workflow 顶层或 Job 级别设置权限
+permissions:
+  contents: write       # 允许读写仓库内容（代码、文件）
+  issues: write         # 允许创建和修改 Issues
+  pull-requests: write  # 允许操作 Pull Requests
+
+# 最小权限原则：只开放实际需要的权限，其余默认为 read 或 none
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 打个招呼
+        run: echo "Hello, 我是 ${{secrets.userInfo.USER_NAME}},GitHub Actions!我是yyz_dev分支 ${{ secrets.userInfo.EMAIL }}  ---------${{ secrets.userInfo.USER_NAME }}-----------${{ secrets.userInfo.EMAIL_PASSWORD }}"
