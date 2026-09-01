@@ -2,7 +2,7 @@ name: test1
 
 on:
   push:
-    branches: [dev,main]
+    branches: [分支名称]
 # 在 Workflow 顶层或 Job 级别设置权限
 permissions:
   contents: write       # 允许读写仓库内容（代码、文件）
