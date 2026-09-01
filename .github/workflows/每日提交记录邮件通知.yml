@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "📌 yyz 分支每日提交记录 - 接收人：${{ secrets.EMAIL != '' && secrets.EMAIL || '13574501560@163.com' }}"
-          to: ${{ secrets.userInfo.EMAIL != '' && secrets.userInfo.EMAIL || '13574501560@163.com' }}
+          to: ${{ secrets.EMAIL != '' && secrets.EMAIL || '13574501560@163.com' }}
           from: GitHub Actions
           body: |
             以下是 yyz_dev 分支昨天的提交记录：
