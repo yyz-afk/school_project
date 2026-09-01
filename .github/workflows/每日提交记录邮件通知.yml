@@ -2,7 +2,7 @@ name: 每日提交记录邮件通知
 
 on:
   schedule:
-    - cron: '50 17 * * *'   # 北京时间凌晨 20对应 4:00
+    - cron: '40 8 * * *'   # 北京时间凌晨 20对应 4:00
       timezone: 'Asia/Shanghai' # 指定时区为北京时间
   workflow_dispatch:
 
@@ -12,10 +12,10 @@ jobs:
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      - name: 检出 yyz 分支代码
+      - name: 检出 dev 分支代码
         uses: actions/checkout@v4
         with:
-          ref: yyz       # 指定要检出的分支
+          ref: dev       # 指定要检出的分支
           fetch-depth: 0     # 拉取全部提交历史
 
       - name: 获取昨日提交记录
