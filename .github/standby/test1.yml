@@ -16,4 +16,4 @@ jobs:
     environment: userInfo
     steps:
       - name: 打个招呼
-        run: echo "Hello, 我是 ${{secrets.GITHUB_TOKEN}},GitHub Actions!我是yyz_dev分支 ${{ secrets.userInfo.USER_NAME }}  ----${{secrets.LOVE}}  -----"
+        run: echo "Hello, 我是 ${{secrets.GITHUB_TOKEN}},GitHub Actions!我是yyz_dev分支 ${{ secrets.USER_NAME }}  ----${{secrets.LOVE}}  -----"
