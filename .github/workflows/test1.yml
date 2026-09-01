@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 打个招呼
-        run: echo "Hello, 我是 ${{secrets.userInfo.USER_NAME}},GitHub Actions!我是yyz_dev分支 ${{ secrets.userInfo.EMAIL }}  ---------${{ secrets.userInfo.USER_NAME }}-----------${{ secrets.userInfo.EMAIL_PASSWORD }}"
+        run: echo "Hello, 我是 ${{userInfo.USER_NAME}},GitHub Actions!我是yyz_dev分支 ${{ userInfo.EMAIL }}  ---------${{ userInfo.USER_NAME }}-----------${{ userInfo.EMAIL_PASSWORD }}"
