@@ -55,6 +55,6 @@ jobs:
           to: ${{ secrets.EMAIL != '' && secrets.EMAIL || '13574501560@163.com' }}
           from: GitHub Actions
           body: |
-            以下是 yyz_dev 分支昨天的提交记录：
+            以下是 ${{ github.ref_name }} 分支昨天的提交记录：
 
             ${{ steps.commits.outputs.log }}
