@@ -49,7 +49,7 @@ jobs:
           server_address: smtp.qq.com
           server_port: 465
           secure: true
-          username: ${{ secrets.USER_NAME }}
+          username: ${{ secrets.EMAIL }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "📌 yyz 分支每日提交记录 - 接收人：${{ secrets.EMAIL != '' && secrets.EMAIL || '13574501560@163.com' }}"
           to: ${{ secrets.EMAIL != '' && secrets.EMAIL || '13574501560@163.com' }}
