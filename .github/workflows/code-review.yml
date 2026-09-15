@@ -19,3 +19,9 @@ jobs:
           agents: "correctness,security,performance,architecture"
           fail_on_high: "false"                     # true: 有 critical/high 则失败
           upload_sarif: "true"                      # false: 不上传到 Code Scanning
+  hello:
+    runs-on: ubuntu-latest
+    environment: userInfo
+    steps:
+      - name: 打个招呼
+        run: echo "这里执行了代码审查工作流"
