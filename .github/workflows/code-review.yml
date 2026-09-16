@@ -2,6 +2,8 @@ name: AI Code Review
 on:
   pull_request:
     branches: [main, dev]
+  push:
+    branches: [ main, dev ]
 permissions:
   contents: read
   security-events: write
@@ -21,7 +23,6 @@ jobs:
           upload_sarif: "true"                      # false: 不上传到 Code Scanning
   hello:
     runs-on: ubuntu-latest
-    environment: userInfo
     steps:
       - name: 打个招呼
         run: echo "这里执行了代码审查工作流"
