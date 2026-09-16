@@ -8,6 +8,11 @@ permissions:
   contents: read
   security-events: write
 jobs:
+  hello0:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 打个招呼
+        run: echo "这里执行了代码审查工作流---------------"
   review:
     runs-on: ubuntu-latest
     steps:
